@@ -15,10 +15,12 @@ import lombok.NoArgsConstructor;
 public class User {
 
     @Id
-    private String id;
-    private String username;
     private String email;
     private String password;
+    private String firstName;
+    private String lastName;
+    private String phone;
+    private String whatsApp;
     private String role;
     private boolean enabled = true;
 
