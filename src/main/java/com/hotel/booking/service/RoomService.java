@@ -41,7 +41,7 @@ public class RoomService {
     public Room updateRoom(int roomId, Room newData) {
         Room existing = roomRepository.findByRoomId(roomId);
         if (existing != null) {
-            newData.setId(existing.getId());
+            newData.setRoomId(existing.getRoomId());
             newData.setRoomId(roomId);
             return roomRepository.save(newData);
         }
