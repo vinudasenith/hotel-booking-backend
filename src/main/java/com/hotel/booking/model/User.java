@@ -20,7 +20,6 @@ public class User {
     private String firstName;
     private String lastName;
     private String phone;
-    private String whatsApp;
     private String role;
     private boolean enabled = true;
 
