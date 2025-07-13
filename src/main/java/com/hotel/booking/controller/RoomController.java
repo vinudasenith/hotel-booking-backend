@@ -9,6 +9,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+
 import java.util.List;
 
 @RestController
@@ -17,11 +26,36 @@ import java.util.List;
 
 public class RoomController {
 
+    private static final String UPLOAD_DIR = "uploads/";
+
     @Autowired
     private RoomService roomService;
 
     @Autowired
     private UserService userService;
+
+    @PostMapping("/upload-image")
+    public ResponseEntity<String> uploadRoomImage(@RequestParam("file") MultipartFile file,
+            @RequestHeader("email") String email) {
+        if (!userService.isAdmin(email)) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Forbidden");
+        }
+        try {
+            File uploadDir = new File(UPLOAD_DIR);
+            if (!uploadDir.exists())
+                uploadDir.mkdirs();
+
+            String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
+            Path filePath = Paths.get(UPLOAD_DIR + fileName);
+            Files.copy(file.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
+
+            String publicUrl = "/uploads/" + fileName;
+            return ResponseEntity.ok(publicUrl);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Upload failed");
+        }
+    }
 
     @PostMapping
     public ResponseEntity<?> createRoom(@RequestBody Room room, @RequestHeader("email") String email) {

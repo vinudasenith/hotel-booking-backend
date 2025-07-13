@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -22,9 +23,7 @@ public class Room {
     private int maxGuests;
     private double price;
     private boolean available = true;
-
-    private List<String> photos;
     private String specialDescription = "";
-    private String notes = "";
+    private List<String> imageUrls = new ArrayList<>();
 
 }
