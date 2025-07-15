@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/bookings")
@@ -26,7 +27,7 @@ public class BookingController {
 
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Booking> getAllBookings() {
         return bookingService.getAllBookings();
     }
@@ -58,6 +59,18 @@ public class BookingController {
             return ResponseEntity.ok().body("Booking deleted");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Booking not found");
+        }
+    }
+
+    @PutMapping("/{bookingId}/status")
+    public ResponseEntity<Booking> updateBookingStatus(@PathVariable String bookingId,
+            @RequestBody Map<String, String> body) {
+        String status = body.get("status");
+        Booking updated = bookingService.updateBookingStatus(bookingId, status);
+        if (updated != null) {
+            return ResponseEntity.ok(updated);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 }
