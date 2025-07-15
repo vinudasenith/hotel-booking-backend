@@ -15,9 +15,6 @@ public class RoomService {
     private RoomRepository roomRepository;
 
     public Room createRoom(Room room) {
-        Room lastRoom = roomRepository.findTopByOrderByRoomIdDesc();
-        int nextId = (lastRoom != null) ? lastRoom.getRoomId() + 1 : 1;
-        room.setRoomId(nextId);
         return roomRepository.save(room);
     }
 
