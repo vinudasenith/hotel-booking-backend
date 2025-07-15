@@ -21,9 +21,9 @@ public class BookingService {
 
         if (lastBooking != null && lastBooking.getBookingId() != null) {
             String lastId = lastBooking.getBookingId();
-            int num = Integer.parseInt(lastId.substring(3));
+            int num = Integer.parseInt(lastId.substring(8));
             num++;
-            nextId = String.format("ORD%03d", num);
+            nextId = String.format("BOOKING-%03d", num);
         }
         booking.setBookingId(nextId);
         return bookingRepository.save(booking);
@@ -57,6 +57,15 @@ public class BookingService {
 
     public List<Booking> getBookingsByEmail(String guestEmail) {
         return bookingRepository.findByGuestEmail(guestEmail);
+    }
+
+    public Booking updateBookingStatus(String bookingId, String status) {
+        Booking booking = bookingRepository.findById(bookingId).orElse(null);
+        if (booking != null) {
+            booking.setStatus(status);
+            return bookingRepository.save(booking);
+        }
+        return null;
     }
 
 }
