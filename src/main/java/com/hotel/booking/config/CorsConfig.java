@@ -11,9 +11,9 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(@NonNull CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:4200", "hotel-booking-three-pink.vercel.app",
-                        "hotel-booking-git-master-vinudas-projects.vercel.app",
-                        "hotel-booking-5wkhcx1pt-vinudas-projects.vercel.app",
+                .allowedOrigins("http://localhost:4200", "hotel-booking-frontend-omega.vercel.app",
+                        "hotel-booking-frontend-git-master-vinudas-projects.vercel.app",
+                        "hotel-booking-frontend-dhs6wk2gy-vinudas-projects.vercel.app",
                         "https://*.vercel.app")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")

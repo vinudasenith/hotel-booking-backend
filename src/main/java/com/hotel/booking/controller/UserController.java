@@ -13,8 +13,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = { "http://localhost:8080", "hotel-booking-three-pink.vercel.app",
-        "hotel-booking-git-master-vinudas-projects.vercel.app", "hotel-booking-5wkhcx1pt-vinudas-projects.vercel.app" })
+@CrossOrigin(origins = { "http://localhost:8080", "hotel-booking-frontend-omega.vercel.app",
+        "hotel-booking-frontend-git-master-vinudas-projects.vercel.app",
+        "hotel-booking-frontend-dhs6wk2gy-vinudas-projects.vercel.app" })
 
 public class UserController {
 
