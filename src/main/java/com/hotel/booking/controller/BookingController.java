@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/bookings")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = { "http://localhost:8080", "https://hotel-booking-inky-chi.vercel.app" })
 
 public class BookingController {
 

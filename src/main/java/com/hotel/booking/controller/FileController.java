@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/files")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = { "http://localhost:8080", "https://hotel-booking-inky-chi.vercel.app" })
 public class FileController {
 
     @Autowired
