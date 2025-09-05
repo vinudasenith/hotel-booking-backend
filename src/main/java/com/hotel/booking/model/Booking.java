@@ -16,14 +16,17 @@ public class Booking {
     @Id
     private String bookingId;
 
+    // room info
     private int roomId;
     private String checkInDate;
     private String checkOutDate;
 
+    // guest info
     private String guestName;
     private String guestEmail;
     private String guestPhone;
 
+    // booking info
     private String status = "pending";
     private String notes = "";
 

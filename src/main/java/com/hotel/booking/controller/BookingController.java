@@ -13,15 +13,14 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/bookings")
-@CrossOrigin(origins = { "http://localhost:8080", "hotel-booking-frontend-omega.vercel.app",
-        "hotel-booking-frontend-git-master-vinudas-projects.vercel.app",
-        "hotel-booking-frontend-dhs6wk2gy-vinudas-projects.vercel.app" })
+@CrossOrigin(origins = { "http://localhost:8080" })
 
 public class BookingController {
 
     @Autowired
     private BookingService bookingService;
 
+    // create booking
     @PostMapping
     public ResponseEntity<Booking> createBooking(@RequestBody Booking booking) {
         Booking created = bookingService.createBooking(booking);
@@ -29,21 +28,25 @@ public class BookingController {
 
     }
 
+    // get all bookings
     @GetMapping("/all")
     public List<Booking> getAllBookings() {
         return bookingService.getAllBookings();
     }
 
+    // get bookings by room id
     @GetMapping("/room/{roomId}")
     public List<Booking> getBookingsByRoomId(@PathVariable int roomId) {
         return bookingService.getBookingsById(roomId);
     }
 
+    // get bookings by guest email
     @GetMapping("/guest/{guestEmail}")
     public List<Booking> getBookingsByGuestEmail(@PathVariable String guestEmail) {
         return bookingService.getBookingsByEmail(guestEmail);
     }
 
+    // update booking
     @PutMapping("/{bookingId}")
     public ResponseEntity<Booking> updateBooking(@PathVariable String bookingId, @RequestBody Booking booking) {
         Booking updated = bookingService.updateBooking(bookingId, booking);
@@ -54,6 +57,7 @@ public class BookingController {
         }
     }
 
+    // delete booking
     @DeleteMapping("/{bookingId}")
     public ResponseEntity<?> deleteBooking(@PathVariable String bookingId) {
         boolean deleted = bookingService.deleteBooking(bookingId);
@@ -64,6 +68,7 @@ public class BookingController {
         }
     }
 
+    // update booking status
     @PutMapping("/{bookingId}/status")
     public ResponseEntity<Booking> updateBookingStatus(@PathVariable String bookingId,
             @RequestBody Map<String, String> body) {

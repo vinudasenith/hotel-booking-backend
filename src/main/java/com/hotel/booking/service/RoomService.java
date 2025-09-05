@@ -14,10 +14,12 @@ public class RoomService {
     @Autowired
     private RoomRepository roomRepository;
 
+    // create room
     public Room createRoom(Room room) {
         return roomRepository.save(room);
     }
 
+    // delete room
     public boolean deleteRoom(int roomId) {
         Room room = roomRepository.findByRoomId(roomId);
         if (room != null) {
@@ -27,14 +29,17 @@ public class RoomService {
         return false;
     }
 
+    // get room by id
     public Room getRoomById(int roomId) {
         return roomRepository.findByRoomId(roomId);
     }
 
+    // get all rooms
     public List<Room> getAllRooms() {
         return roomRepository.findAll();
     }
 
+    // update room
     public Room updateRoom(int roomId, Room newData) {
         Room existing = roomRepository.findByRoomId(roomId);
         if (existing != null) {
@@ -45,6 +50,7 @@ public class RoomService {
         return null;
     }
 
+    // get rooms by category
     public List<Room> getRoomsByCategory(String category) {
         return roomRepository.findByCategory(category);
     }

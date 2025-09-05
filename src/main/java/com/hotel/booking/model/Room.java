@@ -18,12 +18,18 @@ import java.util.List;
 public class Room {
 
     @Id
+
+    // room id
     private int roomId;
+
+    // room details
     private String category;
     private int maxGuests;
     private double price;
     private boolean available = true;
     private String specialDescription = "";
+
+    // room images
     private List<String> imageUrls = new ArrayList<>();
 
 }

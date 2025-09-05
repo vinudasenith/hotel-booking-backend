@@ -12,9 +12,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("hotel-booking-frontend-omega.vercel.app",
-                                "hotel-booking-frontend-git-master-vinudas-projects.vercel.app",
-                                "hotel-booking-frontend-dhs6wk2gy-vinudas-projects.vercel.app")
+                        .allowedOrigins()
                         .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE")
                         .allowedHeaders("*")
                         .allowCredentials(true);

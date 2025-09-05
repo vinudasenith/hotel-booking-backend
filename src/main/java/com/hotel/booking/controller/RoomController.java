@@ -36,6 +36,7 @@ public class RoomController {
     @Autowired
     private UserService userService;
 
+    // upload image
     @PostMapping("/upload-image")
     public ResponseEntity<String> uploadRoomImage(@RequestParam("file") MultipartFile file,
             @RequestHeader("email") String email) {
@@ -59,6 +60,7 @@ public class RoomController {
         }
     }
 
+    // create room
     @PostMapping
     public ResponseEntity<?> createRoom(@RequestBody Room room, @RequestHeader("email") String email) {
         if (!userService.isAdmin(email)) {
@@ -72,6 +74,7 @@ public class RoomController {
         }
     }
 
+    // delete room by id
     @DeleteMapping("/{roomId}")
     public ResponseEntity<?> deleteRoom(@PathVariable int roomId, @RequestHeader("email") String email) {
         if (!userService.isAdmin(email)) {
@@ -86,6 +89,7 @@ public class RoomController {
         }
     }
 
+    // get room by id
     @GetMapping("/{roomId}")
     public ResponseEntity<?> getRoomById(@PathVariable int roomId) {
         Room room = roomService.getRoomById(roomId);
@@ -96,12 +100,14 @@ public class RoomController {
         }
     }
 
+    // get all rooms
     @GetMapping("/all")
     public ResponseEntity<?> getAllRooms() {
         List<Room> rooms = roomService.getAllRooms();
         return ResponseEntity.ok(rooms);
     }
 
+    // update room by id
     @PutMapping("/{roomId}")
     public ResponseEntity<?> updateRoom(@PathVariable int roomId, @RequestBody Room newData,
             @RequestHeader("email") String email) {
@@ -116,6 +122,7 @@ public class RoomController {
         }
     }
 
+    // get rooms by category
     @GetMapping("/category/{category}")
     public ResponseEntity<?> getRoomsByCategory(@PathVariable String category) {
         List<Room> rooms = roomService.getRoomsByCategory(category);

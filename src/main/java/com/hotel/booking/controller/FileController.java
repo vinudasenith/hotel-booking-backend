@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/files")
-@CrossOrigin(origins = { "http://localhost:8080", "hotel-booking-frontend-omega.vercel.app",
-        "hotel-booking-frontend-git-master-vinudas-projects.vercel.app",
-        "hotel-booking-frontend-dhs6wk2gy-vinudas-projects.vercel.app" })
+@CrossOrigin(origins = { "http://localhost:8080" })
 public class FileController {
 
     @Autowired
     private StorageService storageService;
 
+    // upload file
     @GetMapping("/uploads/{filename:.+}")
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
         Resource file = storageService.loadAsResource(filename);

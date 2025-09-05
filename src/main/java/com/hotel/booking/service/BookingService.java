@@ -14,6 +14,7 @@ public class BookingService {
     @Autowired
     private BookingRepository bookingRepository;
 
+    // create booking method
     public Booking createBooking(Booking booking) {
         Booking lastBooking = bookingRepository.findTopByOrderByBookingIdDesc();
 
@@ -29,10 +30,12 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
+    // get all bookings
     public List<Booking> getAllBookings() {
         return bookingRepository.findAll();
     }
 
+    // delete booking
     public boolean deleteBooking(String bookingId) {
         if (bookingRepository.existsById(bookingId)) {
             bookingRepository.deleteById(bookingId);
@@ -42,6 +45,7 @@ public class BookingService {
         }
     }
 
+    // update booking
     public Booking updateBooking(String bookingId, Booking newBookinhg) {
         if (bookingRepository.existsById(bookingId)) {
             newBookinhg.setBookingId(bookingId);
@@ -51,14 +55,17 @@ public class BookingService {
         }
     }
 
+    // get bookings by room id
     public List<Booking> getBookingsById(int roomId) {
         return bookingRepository.findByRoomId(roomId);
     }
 
+    // get bookings by guest email
     public List<Booking> getBookingsByEmail(String guestEmail) {
         return bookingRepository.findByGuestEmail(guestEmail);
     }
 
+    // update booking status
     public Booking updateBookingStatus(String bookingId, String status) {
         Booking booking = bookingRepository.findById(bookingId).orElse(null);
         if (booking != null) {
