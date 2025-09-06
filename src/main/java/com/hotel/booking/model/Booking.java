@@ -27,6 +27,9 @@ public class Booking {
     private String guestPhone;
 
     // booking info
+    private double totalAmount = 0;
+
+    // booking info
     private String status = "pending";
     private String notes = "";
 

@@ -25,7 +25,7 @@ public class Room {
     // room details
     private String category;
     private int maxGuests;
-    private double price;
+    private double price = 0;
     private boolean available = true;
     private String specialDescription = "";
 
