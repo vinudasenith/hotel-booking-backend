@@ -11,7 +11,11 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(@NonNull CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:4200")
+                .allowedOrigins(
+                        "http://localhost:4200",
+                        "https://hotel-booking-frontend-lemon-sigma.vercel.app",
+                        "https://hotel-booking-frontend-git-master-vinudas-projects.vercel.app",
+                        "https://hotel-booking-frontend-lf7zr6mic-vinudas-projects.vercel.app")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
