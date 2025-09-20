@@ -15,7 +15,7 @@ public class CorsConfig implements WebMvcConfigurer {
                         "http://localhost:4200",
                         "https://hotel-booking-frontend-lemon-sigma.vercel.app",
                         "https://hotel-booking-frontend-git-master-vinudas-projects.vercel.app",
-                        "https://hotel-booking-frontend-lf7zr6mic-vinudas-projects.vercel.app")
+                        "https://hotel-booking-frontend-84ud5o4v2-vinudas-projects.vercel.app")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
